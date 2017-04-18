@@ -13,6 +13,7 @@ def userLog(request):
         respuesta = "Not logged in. " + '<a href="/login">Login</a><br/>'
     return respuesta
 
+
 def mostrar_todo(request):
     respuesta = userLog(request)
     lPages = Page.objects.all()
@@ -23,6 +24,7 @@ def mostrar_todo(request):
     respuesta += "</ul>"
     return HttpResponse(respuesta)
 
+
 def mostrar_id(request, page_id):
     respuesta = userLog(request)
     try:
@@ -31,6 +33,7 @@ def mostrar_id(request, page_id):
     except Page.DoesNotExist:
         respuesta += 'Pagina no encontrada'
     return HttpResponse(respuesta)
+
 
 @csrf_exempt
 def contenido(request, recurso):
@@ -58,7 +61,7 @@ def contenido(request, recurso):
                 contenido.save()
             respuesta += "La página ha sido actualizada"
         else:
-            respuesta += "Usted no está registrado. No puede modificar contenido"
+            respuesta += "No estás registrado. No puedes modificar contenido"
     elif request.method == 'POST':
         if request.user.is_authenticated():
             nombre = request.POST['name']
@@ -67,7 +70,7 @@ def contenido(request, recurso):
             contenido.save()
             respuesta += "Página guardada"
         else:
-            respuesta += "Usted no está registrado. No puede modificar contenido"
+            respuesta += "No estás registrado. No puedes modificar contenido"
     else:
         respuesta += "Metodo introducido no válido"
     return HttpResponse(respuesta)
