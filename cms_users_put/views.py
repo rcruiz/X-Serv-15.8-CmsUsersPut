@@ -38,7 +38,7 @@ def mostrar_id(request, page_id):
 @csrf_exempt
 def contenido(request, recurso):
     cuerpo = request.body
-    formulario = "<form method = POST action=''" + recurso + ">"
+    formulario = "<form method = 'POST' action=''>"
     formulario += "Nombre: <input type='text' name='name'><br/>"
     formulario += "Página: <input type='text' name='page'><br/>"
     formulario += "<input type='submit' value='Enviar'></form>"
@@ -72,5 +72,5 @@ def contenido(request, recurso):
         else:
             respuesta += "No estás registrado. No puedes modificar contenido"
     else:
-        respuesta += "Metodo introducido no válido"
+        respuesta += "Método introducido no válido"
     return HttpResponse(respuesta)

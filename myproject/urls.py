@@ -19,11 +19,11 @@ from cms_users_put import views
 from django.contrib.auth.views import login, logout
 
 urlpatterns = [
-    url(r'^$', views.mostrar_todo, name='Mostrar paginas almacenadas'),
-    url(r'^(\d+)$', views.mostrar_id, name='Acceso a page por id'),
+    url(r'^$', views.mostrar_todo, name='pageStore'),
+    url(r'^(\d+)$', views.mostrar_id, name='pageId'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^logout', logout, {'next_page': '/'}),
     url(r'^login', login),
     # url(r'^(\w+)$', views.contenido, name='Accede y modifica contenido'),
-    url(r'^(.+)', views.contenido, name='Accede y modifica contenido'),
+    url(r'^(.+)', views.contenido, name='replaceContent'),
 ]
